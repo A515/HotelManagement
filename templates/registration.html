@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+</head>
+<body>
+
+<div class="container">
+
+    <form class="login-form" method="post" enctype="multipart/form-data">
+        {% csrf_token%}
+        <select name="role">
+            <option value="0">Select Role</option>
+            {% if data%}
+                {% for i in data%}
+                    <option value="{{ i.id }}">{{i.role}} </option>
+                {% endfor %}
+            {%else%}
+                <option>No data found</option>
+            {% endif %}
+        </select>
+        <div class="form-group">
+            <label class="label1">Name</label>
+            <input type="text" name="name">
+        </div>
+
+        <div class="form-group">
+            <label class="label1">Email</label>
+            <input type="email" name="email">
+        </div>
+
+        <div class="form-group">
+           <label class="label1">Select Gender</Label>
+            <input type="radio" name="gender" value="male">Male
+            <input type="radio" name="gender" value="female">Female
+        </div>
+
+        <div class="form-group login-btn">
+       <input type="submit" value="Submit">
+    </div>
+   </form>
+</div>
+
+</body>
+</html>
